@@ -1,3 +1,4 @@
+<?php get_header(); ?>
 
 <h1><?php bloginfo( 'name' ); ?></h1>
 <h2><?php bloginfo( 'description' ); ?></h2>
@@ -27,4 +28,7 @@ previous_posts_link();
 
 <p>No posts found. :(</p>
 
-<?php endif; ?>
+<?php endif; 
+
+get_footer();
+?>
