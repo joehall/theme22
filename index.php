@@ -1,11 +1,14 @@
 <?php get_header(); ?>
 
-<h1><?php bloginfo( 'name' ); ?></h1>
-<h2><?php bloginfo( 'description' ); ?></h2>
-
+  <div class="row">
+    <div class="col-sm-8">
+		
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-<h3><?php the_title(); ?></h3>
+<h1><?php the_title(); ?></h1>
+<p class="lead">
+  This is a lead paragraph. It stands out from regular paragraphs.
+</p>
 
 <?php the_content(); ?>
 <?php wp_link_pages(); ?>
@@ -28,7 +31,14 @@ previous_posts_link();
 
 <p>No posts found. :(</p>
 
-<?php endif; 
+<?php endif; ?>		
+		
+    </div>
+<?php get_sidebar(); ?>
+  </div>
+  
+
+<?php 
 
 get_footer();
 ?>
