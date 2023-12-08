@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="<?php echo esc_url( get_stylesheet_uri() ); ?>" type="text/css" />
 <?php wp_head(); ?>
   </head>
-  <body>
+  <body <?php body_class(); ?>>
+  <?php wp_body_open(); ?>
    <div class="container">
     <div class="row">
 		<div class="col">
   <nav class="navbar navbar-expand-lg  bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
