@@ -34,7 +34,9 @@ previous_posts_link();
 <?php endif; ?>		
 		
     </div>
+<div class="col-sm-4">
 <?php get_sidebar(); ?>
+</div>
   </div>
   
 
