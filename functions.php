@@ -2,6 +2,7 @@
 
 include 'inc/widget-areas.php';
 include 'inc/wp_bootstrap_navwalker.php';
+include 'inc/breadcrumbs.php';
 
 register_nav_menu('main-menu', 'Main menu');
 
