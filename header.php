@@ -12,6 +12,7 @@
    <div class="container">
     <div class="row">
 		<div class="col">
+			<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'name' ); ?></a>
@@ -26,7 +27,7 @@
                 'container' => false,
                 'menu_class' => '',
                 'fallback_cb' => '__return_false',
-                'items_wrap' => '<ul id="%1$s" class="nav justify-content-end %2$s">%3$s</ul>',
+                'items_wrap' => '<ul role="menubar" id="%1$s" class="nav justify-content-end %2$s">%3$s</ul>',
                 'depth' => 2,
                 'walker' => new bootstrap_5_wp_nav_menu_walker()
             ));

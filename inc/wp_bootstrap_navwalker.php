@@ -28,7 +28,7 @@ class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu
     }
     $indent = str_repeat("\t", $depth);
     $submenu = ($depth > 0) ? ' sub-menu' : '';
-    $output .= "\n$indent<ul class=\"dropdown-menu$submenu " . esc_attr(implode(" ",$dropdown_menu_class)) . " depth_$depth\">\n";
+    $output .= "\n$indent<ul  role=\"menu\" class=\"dropdown-menu$submenu " . esc_attr(implode(" ",$dropdown_menu_class)) . " depth_$depth\">\n";
   }
 
   function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
@@ -55,7 +55,7 @@ class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu
     $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args);
     $id = strlen($id) ? ' id="' . esc_attr($id) . '"' : '';
 
-    $output .= $indent . '<li ' . $id . $value . $class_names . $li_attributes . '>';
+    $output .= $indent . '<li role="none" itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"' . $id . $value . $class_names . $li_attributes . '>';
 
     $attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
     $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
@@ -67,7 +67,7 @@ class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu
     $attributes .= ( $args->walker->has_children ) ? ' class="'. $nav_link_class . $active_class . ' dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="'. $nav_link_class . $active_class . '"';
 
     $item_output = $args->before;
-    $item_output .= '<a' . $attributes . '>';
+    $item_output .= '<a role="menuitem"' . $attributes . '>';
     $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
     $item_output .= '</a>';
     $item_output .= $args->after;
@@ -75,5 +75,5 @@ class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu
     $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
   }
 }
-// register a new menu
-register_nav_menu('main-menu', 'Main menu');
+
+
