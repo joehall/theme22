@@ -12,7 +12,7 @@
    <div class="container">
     <div class="row">
 		<div class="col">
-			<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+			<a class="visually-hidden-focusable" href="#content">Skip to main content</a>
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'name' ); ?></a>
