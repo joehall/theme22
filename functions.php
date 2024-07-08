@@ -27,6 +27,17 @@ function register_theme_scripts() {
 }
 
 
+add_filter ('get_the_excerpt','lead_filter_excerpt');
 
+function lead_filter_excerpt ($post_excerpt) { 
+  $post_excerpt = '<p class="lead">' . $post_excerpt . '</p>';
+  return $post_excerpt;
+  }  
+  
+ add_filter( 'the_author_posts_link', function( $link )
+{
+    return str_replace( 'rel="author"', 'rel="author" itemprop="author" itemscope itemtype="https://schema.org/Person"', $link );
+}); 
+  
 
 ?>
