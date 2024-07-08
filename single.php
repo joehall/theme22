@@ -6,7 +6,7 @@
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting" itemid="<?php the_permalink(); ?>">
 <header>
-	<h1 property="name" class="display-5 link-body-emphasis mb-1"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+	<h1 itemprop="name" class="display-5 link-body-emphasis mb-1"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 	<p class="blog-post-meta"><?php the_date(); ?> by <?php the_author_posts_link(); ?></p>
 	<?php the_excerpt(); ?>
 </header>	

@@ -3,11 +3,11 @@
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php wp_title( '|', true, 'right' ); ?></title>
+    <link rel="canonical" href="<?php echo esc_url( wp_get_canonical_url() ); ?>" />
     <link rel="stylesheet" href="<?php echo esc_url( get_stylesheet_uri() ); ?>" type="text/css" />
 <?php wp_head(); ?>
   </head>
-  <body vocab="https://schema.org/" typeof="WebPage" <?php body_class(); ?>>
+  <body itemscope="" itemtype="https://schema.org/WebPage" <?php body_class(); ?>>
   <?php wp_body_open(); ?>
    <div class="container">
     <div class="row">

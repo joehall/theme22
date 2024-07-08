@@ -23,7 +23,7 @@ function register_theme_styles() {
 function register_theme_scripts() {
 	$args = array('strategy'  => 'defer','in_footer'  => true);
     wp_enqueue_script( 'bootstrapstylescripts', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array(), '5.3.3', $args);
-    ##wp_enqueue_style( 'bootstrapstylescripts' );
+    
 }
 
 
@@ -39,5 +39,6 @@ function lead_filter_excerpt ($post_excerpt) {
     return str_replace( 'rel="author"', 'rel="author" itemprop="author" itemscope itemtype="https://schema.org/Person"', $link );
 }); 
   
+add_theme_support( 'title-tag' );
 
 ?>

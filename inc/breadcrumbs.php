@@ -19,15 +19,15 @@ function custom_breadcrumbs() {
     if ( !is_front_page() ) {
        
         // Build the breadcrums
-        echo '<nav  aria-label="breadcrumb"><ol vocab="https://schema.org/" typeof="BreadcrumbList" class="' . $breadcrums_class . '">';
+        echo '<nav  aria-label="breadcrumb"><ol itemscope itemtype="https://schema.org/BreadcrumbList" class="' . $breadcrums_class . '">';
            
         // Home page
-        echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
+        echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item"><a href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
         
            
         if ( is_archive() && !is_tax() && !is_category() && !is_tag() ) {
               
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . post_type_archive_title($prefix, false) . '</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . post_type_archive_title($prefix, false) . '</li>';
               
         } else if ( is_archive() && is_tax() && !is_category() && !is_tag() ) {
               
@@ -40,13 +40,13 @@ function custom_breadcrumbs() {
                 $post_type_object = get_post_type_object($post_type);
                 $post_type_archive = get_post_type_archive_link($post_type);
               
-                echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
+                echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item"><a href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
                 
               
             }
               
             $custom_tax_name = get_queried_object()->name;
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item">' . $custom_tax_name . '</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item">' . $custom_tax_name . '</li>';
               
         } else if ( is_single() ) {
               
@@ -59,7 +59,7 @@ function custom_breadcrumbs() {
                 $post_type_object = get_post_type_object($post_type);
                 $post_type_archive = get_post_type_archive_link($post_type);
               
-                echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
+                echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item"><a href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
                 
               
             }
@@ -79,7 +79,7 @@ function custom_breadcrumbs() {
                 // Loop through parent categories and store in variable $cat_display
                 $cat_display = '';
                 foreach($cat_parents as $parents) {
-                    $cat_display .= '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">'.$parents.'</li>';
+                    $cat_display .= '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">'.$parents.'</li>';
                     
                 }
              
@@ -100,25 +100,25 @@ function custom_breadcrumbs() {
             // Check if the post is in a category
             if(!empty($last_category)) {
                 echo $cat_display;
-                echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
+                echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
                   
             // Else if post is in a custom taxonomy
             } else if(!empty($cat_id)) {
                   
-                echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a href="' . $cat_link . '" title="' . $cat_name . '">' . $cat_name . '</a></li>';
+                echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item"><a href="' . $cat_link . '" title="' . $cat_name . '">' . $cat_name . '</a></li>';
                 
-                echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
+                echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
               
             } else {
                   
-                echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
+                echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
                   
             }
               
         } else if ( is_category() ) {
                
             // Category page
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . single_cat_title('', false) . '</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . single_cat_title('', false) . '</li>';
                
         } else if ( is_page() ) {
                
@@ -134,7 +134,7 @@ function custom_breadcrumbs() {
                 // Parent page loop
                 if ( !isset( $parents ) ) $parents = null;
                 foreach ( $anc as $ancestor ) {
-                    $parents .= '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
+                    $parents .= '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item"><a href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
                     
                 }
                    
@@ -142,12 +142,12 @@ function custom_breadcrumbs() {
                 echo $parents;
                    
                 // Current page
-                echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
+                echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
                    
             } else {
                    
                 // Just display current page if not parents
-                echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
+                echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
                    
             }
                
@@ -165,38 +165,38 @@ function custom_breadcrumbs() {
             $get_term_name  = $terms[0]->name;
                
             // Display the tag name
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . $get_term_name . '</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . $get_term_name . '</li>';
            
         } elseif ( is_day() ) {
                
             // Day archive
                
             // Year link
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item"><a href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
             
                
             // Month link
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</a></li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item"><a href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</a></li>';
             
                
             // Day display
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page"> ' . get_the_time('jS') . ' ' . get_the_time('M') . ' Archives</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page"> ' . get_the_time('jS') . ' ' . get_the_time('M') . ' Archives</li>';
                
         } else if ( is_month() ) {
                
             // Month Archive
                
             // Year link
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item"><a href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
             
                
             // Month display
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_time('M') . ' Archives</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_time('M') . ' Archives</li>';
                
         } else if ( is_year() ) {
                
             // Display year archive
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_time('Y') . ' Archives</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . get_the_time('Y') . ' Archives</li>';
                
         } else if ( is_author() ) {
                
@@ -207,22 +207,22 @@ function custom_breadcrumbs() {
             $userdata = get_userdata( $author );
                
             // Display author name
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . 'Author: ' . $userdata->display_name . '</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . 'Author: ' . $userdata->display_name . '</li>';
            
         } else if ( get_query_var('paged') ) {
                
             // Paginated archives
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">'.__('Page') . ' ' . get_query_var('paged') . '</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">'.__('Page') . ' ' . get_query_var('paged') . '</li>';
                
         } else if ( is_search() ) {
            
             // Search results page
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">Search results for: ' . get_search_query() . '</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">Search results for: ' . get_search_query() . '</li>';
            
         } elseif ( is_404() ) {
                
             // 404 page
-            echo '<li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">' . 'Error 404' . '</li>';
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb-item active" aria-current="page">' . 'Error 404' . '</li>';
         }
        
         echo '</ol></nav>';
