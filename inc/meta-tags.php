@@ -21,11 +21,31 @@ add_action( 'wp_head', 'meta_description');
 
 function canonical_tag() {
 
-echo '<link rel="canonical" href="'. esc_url( wp_get_canonical_url() ).'" />';
+echo '<link rel="canonical" href="'.esc_url( wp_get_canonical_url() ).'" />';
 
 }
 add_action( 'wp_head', 'canonical_tag');
 
 
+
+add_filter( 'wp_robots', function( $robots ) {
+	$robots['unavailable_after'] = false; //"2028-11-30";
+	$robots['noindex'] = false;
+	$robots['nofollow'] = false;
+	$robots['max-image-preview'] = false;
+	$robots['noarchive'] = false;
+	$robots['nosnippet'] = false;
+	$robots['max-snippet'] = false; //"-1";
+	$robots['max-image-preview'] = false; //"large";
+	$robots['max-video-preview'] = false; //"-1";
+	$robots['notranslate'] = false;
+	$robots['noimageindex'] = false;
+	
+	return $robots;
+} );
+
 add_theme_support( 'title-tag' );
+
+remove_action( 'wp_head', 'wp_generator' );
+
 ?>
