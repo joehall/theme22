@@ -3,6 +3,7 @@
 include 'inc/widget-areas.php';
 include 'inc/wp_bootstrap_navwalker.php';
 include 'inc/breadcrumbs.php';
+include 'inc/meta-tags.php';
 
 register_nav_menu('main-menu', 'Main menu');
 
@@ -39,6 +40,5 @@ function lead_filter_excerpt ($post_excerpt) {
     return str_replace( 'rel="author"', 'rel="author" itemprop="author" itemscope itemtype="https://schema.org/Person"', $link );
 }); 
   
-add_theme_support( 'title-tag' );
 
 ?>
