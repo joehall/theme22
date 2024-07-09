@@ -21,7 +21,7 @@ add_action( 'wp_head', 'meta_description');
 
 function canonical_tag() {
 
-echo '<link rel="canonical" href="'. esc_url( wp_get_canonical_url() ).'" /> \n';
+echo '<link rel="canonical" href="'. esc_url( wp_get_canonical_url() ).'" />';
 
 }
 add_action( 'wp_head', 'canonical_tag');
