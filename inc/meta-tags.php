@@ -1,13 +1,13 @@
 <?php
 
-function codeastrology_meta_description() {
+function meta_description() {
     global $post;
     if ( is_singular() ) {
-        $des_post = strip_tags( $post->post_content );
-        $des_post = strip_shortcodes( $post->post_content );
-        $des_post = str_replace( array("\n", "\r", "\t"), ' ', $des_post );
-        $des_post = mb_substr( $des_post, 0, 300, 'utf8' );
-        echo '<meta name="description" content="' . $des_post . '" />' . "\n";
+		
+        $postwotags = strip_tags( $post->post_content );
+        $postwobrks = str_replace( array("\n", "\r", "\t"), ' ', $postwotags );
+        $metadescription = mb_substr( $postwobrks, 0, 300, 'utf8' );
+        echo '<meta name="description" content="'.$metadescription.'" />' . "\n";
     }
     if ( is_home() ) {
         echo '<meta name="description" content="' . get_bloginfo( "description" ) . '" />' . "\n";
@@ -17,7 +17,15 @@ function codeastrology_meta_description() {
         echo '<meta name="description" content="' . $des_cat . '" />' . "\n";
     }
 }
-add_action( 'wp_head', 'codeastrology_meta_description');
+add_action( 'wp_head', 'meta_description');
+
+function canonical_tag() {
+
+echo '<link rel="canonical" href="'. esc_url( wp_get_canonical_url() ).'" /> \n';
+
+}
+add_action( 'wp_head', 'canonical_tag');
+
 
 add_theme_support( 'title-tag' );
 ?>
