@@ -14,7 +14,15 @@
 			<a class="visually-hidden-focusable" href="#content">Skip to main content</a>
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'name' ); ?></a>
+		<div class="navbar-brand">
+			<?php if ( get_theme_mod( 'custom_logo_display' ) ): ?>
+				<a href="<?php echo esc_url( home_url( '/' )); ?>">
+					<img src="<?php echo esc_url(get_theme_mod( 'custom_logo_display' )); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                </a>
+            <?php else : ?>
+                <a class="site-title" href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'name' ); ?></a>
+            <?php endif; ?>	
+		</div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

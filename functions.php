@@ -4,6 +4,7 @@ include 'inc/widget-areas.php';
 include 'inc/wp_bootstrap_navwalker.php';
 include 'inc/breadcrumbs.php';
 include 'inc/meta-tags.php';
+include 'inc/customizer.php';
 
 register_nav_menu('main-menu', 'Main menu');
 
