@@ -12,7 +12,7 @@
     <div class="row">
 		<div class="col">
 			<a class="visually-hidden-focusable" href="#content">Skip to main content</a>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light">
     <div class="container-fluid">
 		<div class="navbar-brand">
 			<?php if ( get_theme_mod( 'custom_logo_display' ) ): ?>
