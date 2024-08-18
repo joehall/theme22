@@ -19,7 +19,7 @@ get_header(); ?>
 			</video> 
 		</div>
 		<div class="col">
-			<div class="list-group" style="height:563px;overflow:scroll;">
+			<div class="class-menu list-group">
 				<a href="#" class="list-group-item list-group-item-action active" aria-current="true">The current link item</a>
 				<a href="#" class="list-group-item list-group-item-action">A second link item</a>
 				<a href="#" class="list-group-item list-group-item-action">A third link item</a>
