@@ -15,7 +15,7 @@ function theme22_customize_register( $wp_customize ) {
       'transport'   => 'refresh',
   ) );
 
-  
+
   $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'main_color_display', array(
       'label' => 'Main color:',
       'section' => 'theme22_colors',
@@ -24,11 +24,11 @@ function theme22_customize_register( $wp_customize ) {
   ) );
 
   $wp_customize->add_setting( 'homebanerText_color_display' , array(
-      'default'     => '#ffffff',
+      'default'     => '#000000',
       'transport'   => 'refresh',
   ) );
 
-  
+
   $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'homebanerText_color_display', array(
       'label' => 'Homepage banner text color:',
       'section' => 'theme22_colors',
@@ -38,11 +38,11 @@ function theme22_customize_register( $wp_customize ) {
 
 
   $wp_customize->add_setting( 'accent_color_display' , array(
-      'default'     => '#dd9933',
+      'default'     => '#000000',
       'transport'   => 'refresh',
   ) );
 
-  
+
   $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color_display', array(
       'label' => 'Accent color:',
       'section' => 'theme22_colors',
@@ -53,11 +53,11 @@ function theme22_customize_register( $wp_customize ) {
 
 
   $wp_customize->add_setting( 'background_color_display' , array(
-      'default'     => '#ffffff',
+      'default'     => '#000000',
       'transport'   => 'refresh',
   ) );
 
-  
+
   $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'background_color_display', array(
       'label' => 'Background color:',
       'section' => 'theme22_colors',
@@ -66,7 +66,7 @@ function theme22_customize_register( $wp_customize ) {
   ) );
 
 
-###	
+###
   $wp_customize->add_section( 'speed_button' , array(
       'title'      => 'Instant.Page',
       'priority'   => 20,
@@ -100,13 +100,13 @@ function theme22_customize_register( $wp_customize ) {
         //'default' => __( '', 'theme22' ),
         'sanitize_callback' => 'esc_url',
     ) );
-    
+
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'custom_logo_display', array(
         'label'    => __( 'Upload Logo (replaces text)', 'theme22' ),
         'section'  => 'custom_logo',
         'settings' => 'custom_logo_display',
     ) ) );
-    
+
 
 }
 
