@@ -15,8 +15,10 @@ add_action( 'wp_enqueue_scripts', 'register_theme_styles' );
 add_action( 'wp_enqueue_scripts', 'register_theme_scripts' );
 
 
+
 function register_theme_styles() {
-    wp_register_style( 'bootstrapstylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' );
+	wp_register_style( 'bootstrapstylesheet', 'http://localhost:8000/wp-content/themes/theme22/assets/css/journal/bootstrap.min.css' );
+    ##wp_register_style( 'bootstrapstylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' );
     wp_enqueue_style( 'bootstrapstylesheet' );
 }
 
