@@ -10,8 +10,8 @@
 get_header(); ?>
 
   <div class="row">
-    <div class="col">
-		
+    <article class="col">
+
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 <h1 property="name"><?php the_title(); ?></h1>
@@ -24,9 +24,9 @@ get_header(); ?>
 
 
 
-<?php endif; ?>		
-		
-    </div>
+<?php endif; ?>
+
+    </article>
   </div>
 
 <?php
