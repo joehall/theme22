@@ -11,21 +11,7 @@ get_header(); ?>
 
   <div class="row">
     <article class="col">
-
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
-<h1 property="name"><?php the_title(); ?></h1>
-<?php custom_breadcrumbs(); ?>
-<?php the_content(); ?>
-<?php wp_link_pages(); ?>
-<?php edit_post_link(); ?>
-
-<?php endwhile; ?>
-
-
-
-<?php endif; ?>
-
+      <?php get_template_part( 'template-parts/content', 'page' ); ?>
     </article>
   </div>
 
