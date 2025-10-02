@@ -11,7 +11,7 @@
   <body itemscope="" itemtype="https://schema.org/WebPage" <?php body_class(); ?>>
 
   <?php wp_body_open(); ?>
-  <nav class="navbar navbar-expand-md">
+  <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="light">
     <a class="visually-hidden-focusable" href="#content">Skip to main content</a>
       <div class="container">
   		<div class="navbar-brand">

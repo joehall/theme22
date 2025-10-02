@@ -110,7 +110,7 @@ function theme22_customize_register( $wp_customize ) {
 
 }
 
-add_action( 'wp_head', 'cd_customizer_css');
+## add_action( 'wp_head', 'cd_customizer_css');
 function cd_customizer_css()
 {
     ?>
