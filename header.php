@@ -11,7 +11,7 @@
   <body itemscope="" itemtype="https://schema.org/WebPage" <?php body_class(); ?>>
 
   <?php wp_body_open(); ?>
-  <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="light">
+  <nav class="navbar navbar-expand-md bg-body-tertiary" data-bs-theme="light">
     <a class="visually-hidden-focusable" href="#content">Skip to main content</a>
       <div class="container">
   		<div class="navbar-brand">
@@ -34,7 +34,7 @@
                   'container' => false,
                   'menu_class' => '',
                   'fallback_cb' => '__return_false',
-                  'items_wrap' => '<ul role="menubar" id="%1$s" class="nav justify-content-end %2$s">%3$s</ul>',
+                  'items_wrap' => '<ul role="menubar" id="%1$s" class="nav %2$s">%3$s</ul>',
                   'depth' => 2,
                   'walker' => new bootstrap_5_wp_nav_menu_walker()
               ));
