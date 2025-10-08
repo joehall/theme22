@@ -3,7 +3,7 @@
 add_action('customize_register','theme22_customize_register');
 function theme22_customize_register( $wp_customize ) {
 
-
+## COLORS
 
   $wp_customize->add_section( 'theme22_colors' , array(
       'title'      => 'Colors',
@@ -66,7 +66,7 @@ function theme22_customize_register( $wp_customize ) {
   ) );
 
 
-###
+## SPEED
   $wp_customize->add_section( 'speed_button' , array(
       'title'      => 'Instant.Page',
       'priority'   => 20,
@@ -89,7 +89,7 @@ function theme22_customize_register( $wp_customize ) {
 ) );
 
 
-//custom logo
+##custom logo
 
   $wp_customize->add_section( 'custom_logo' , array(
       'title'      => 'Custom Logo',
@@ -106,6 +106,32 @@ function theme22_customize_register( $wp_customize ) {
         'section'  => 'custom_logo',
         'settings' => 'custom_logo_display',
     ) ) );
+
+
+## Breadcrumbs
+
+$wp_customize->add_section( 'breadcrumbs' , array(
+    'title'      => 'Breadcrumbs',
+    'priority'   => 20,
+) );
+
+$wp_customize->add_setting( 'breadcrumbs_display' , array(
+    'default'     => true,
+    'transport'   => 'refresh',
+) );
+
+$wp_customize->add_control( 'breadcrumbs_display', array(
+'label' => 'Show Breadcrumbs?',
+'section' => 'breadcrumbs',
+'settings' => 'breadcrumbs_display',
+'type' => 'radio',
+'choices' => array(
+  'on' => 'Show',
+  'off' => 'Hide',
+),
+) );
+
+
 
 
 }
