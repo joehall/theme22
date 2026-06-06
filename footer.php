@@ -1,18 +1,31 @@
-</main>
-<footer class="footer container">
-	<div class="row">
-		<?php if ( is_active_sidebar( 'footer' ) ) : dynamic_sidebar( 'footer' );  endif; ?>
-	</div>
-</footer>
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package theme22
+ */
 
+?>
+<?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
+			</div><!-- .row -->
+		</div><!-- .container -->
+	</div><!-- #content -->
+    <?php get_template_part( 'footer-widget' ); ?>
+	<footer id="colophon" class="site-footer <?php echo theme22_bg_class(); ?>" role="contentinfo">
+		<div class="container pt-3 pb-3">
+            <div class="site-info">
+                &copy; <?php echo date('Y'); ?> <?php echo '<a href="'.home_url().'">'.get_bloginfo('name').'</a>'; ?>
 
+            </div><!-- btn-close .site-info -->
+		</div>
+	</footer><!-- #colophon -->
+<?php endif; ?>
+</div><!-- #page -->
 
-
-    <?php wp_footer(); ?>
-
-    <?php if( get_theme_mod( 'speed_button_display', 'on' ) == 'on' ) : ?>
-    <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-    <?php endif ?>
-
-  </body>
+<?php wp_footer(); ?>
+</body>
 </html>

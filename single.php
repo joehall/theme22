@@ -1,49 +1,35 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package theme22
+ */
 
-  <div id="content" class="row">
-    <article class="col-sm-8">
+get_header(); ?>
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<section class="blog-post" itemscope itemtype="https://schema.org/BlogPosting" itemid="<?php the_permalink(); ?>">
-<header>
-	<h1 itemprop="name" class="display-5 link-body-emphasis mb-1"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-	<p class="blog-post-meta"><?php the_date(); ?> by <?php the_author_posts_link(); ?></p>
-	<?php the_excerpt(); ?>
-</header>
-<section itemprop="articleBody">
-<?php the_content(); ?>
-</section>
-<footer>
-<?php wp_link_pages(); ?>
-<?php edit_post_link(); ?>
+	<section id="primary" class="content-area col-sm-12 col-lg-8">
+		<div id="main" class="site-main" role="main">
 
-<?php endwhile; ?>
+		<?php
+		while ( have_posts() ) : the_post();
+
+			get_template_part( 'template-parts/content', get_post_format() );
+
+			    the_post_navigation();
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+		endwhile; // End of the loop.
+		?>
+
+		</div><!-- #main -->
+	</section><!-- #primary -->
 
 <?php
-if ( get_next_posts_link() ) {
-next_posts_link();
-}
-?>
-<?php
-if ( get_previous_posts_link() ) {
-previous_posts_link();
-}
-?>
-</footer>
-<?php else: ?>
-
-<p>No posts found. :(</p>
-</section>
-<?php endif; ?>
-
-    </article>
-
-<?php get_sidebar(); ?>
-
-  </div>
-
-
-<?php
-
+get_sidebar();
 get_footer();
-?>

@@ -1,153 +1,253 @@
 <?php
+/**
+ * Theme22 Theme Customizer
+ *
+ * @package theme22
+ */
 
-add_action('customize_register','theme22_customize_register');
+/**
+ * Add postMessage support for site title and description for the Theme Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ */
+function themeslug_sanitize_checkbox( $checked ) {
+    // Boolean check.
+    return ( ( isset( $checked ) && true == $checked ) ? true : false );
+}
+
 function theme22_customize_register( $wp_customize ) {
 
-## COLORS
+    //Style Preset
+    $wp_customize->add_section(
+        'typography',
+        array(
+            'title' => __( 'Preset Styles', 'theme22' ),
+            //'description' => __( 'This is a section for the typography', 'theme22' ),
+            'priority' => 20,
+        )
+    );
 
-  $wp_customize->add_section( 'theme22_colors' , array(
-      'title'      => 'Colors',
-      'priority'   => 20,
-  ) );
-
-  $wp_customize->add_setting( 'main_color_display' , array(
-      'default'     => '#5e007a',
-      'transport'   => 'refresh',
-  ) );
-
-
-  $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'main_color_display', array(
-      'label' => 'Main color:',
-      'section' => 'theme22_colors',
-      'settings' => 'main_color_display',
-    ),
-  ) );
-
-  $wp_customize->add_setting( 'homebanerText_color_display' , array(
-      'default'     => '#000000',
-      'transport'   => 'refresh',
-  ) );
-
-
-  $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'homebanerText_color_display', array(
-      'label' => 'Homepage banner text color:',
-      'section' => 'theme22_colors',
-      'settings' => 'homebanerText_color_display',
-    ),
-  ) );
-
-
-  $wp_customize->add_setting( 'accent_color_display' , array(
-      'default'     => '#000000',
-      'transport'   => 'refresh',
-  ) );
-
-
-  $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color_display', array(
-      'label' => 'Accent color:',
-      'section' => 'theme22_colors',
-      'settings' => 'accent_color_display',
-    ),
-  ) );
-
-
-
-  $wp_customize->add_setting( 'background_color_display' , array(
-      'default'     => '#000000',
-      'transport'   => 'refresh',
-  ) );
-
-
-  $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'background_color_display', array(
-      'label' => 'Background color:',
-      'section' => 'theme22_colors',
-      'settings' => 'background_color_display',
-    ),
-  ) );
-
-
-## SPEED
-  $wp_customize->add_section( 'speed_button' , array(
-      'title'      => 'Instant.Page',
-      'priority'   => 20,
-  ) );
-
-  $wp_customize->add_setting( 'speed_button_display' , array(
-      'default'     => true,
-      'transport'   => 'refresh',
-  ) );
-
-  $wp_customize->add_control( 'speed_button_display', array(
-  'label' => 'Instant.page Setting',
-  'section' => 'speed_button',
-  'settings' => 'speed_button_display',
-  'type' => 'radio',
-  'choices' => array(
-    'on' => 'On',
-    'off' => 'Off',
-  ),
-) );
-
-
-##custom logo
-
-  $wp_customize->add_section( 'custom_logo' , array(
-      'title'      => 'Custom Logo',
-      'priority'   => 20,
-  ) );
-
-    $wp_customize->add_setting( 'custom_logo_display', array(
-        //'default' => __( '', 'theme22' ),
-        'sanitize_callback' => 'esc_url',
+    //Theme Option
+    $wp_customize->add_setting( 'theme_option_setting', array(
+        'default'   => 'default',
+        'type'       => 'theme_mod',
+        'capability' => 'edit_theme_options',
+        'sanitize_callback' => 'wp_filter_nohtml_kses',
     ) );
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'theme_option_setting', array(
+        'label' => __( 'Theme Option', 'theme22' ),
+        'section'    => 'typography',
+        'settings'   => 'theme_option_setting',
+        'type'    => 'select',
+        'choices' => array(
+            'default' => 'Default',
+            'cerulean' => 'Cerulean',
+            'cosmo' => 'Cosmo',
+            'cyborg' => 'Cyborg',
+            'darkly' => 'Darkly',
+            'flatly' => 'Flatly',
+            'journal' => 'Journal',
+            'litera' => 'Litera',
+            'lumen' => 'Lumen',
+            'lux' => 'Lux',
+            'materia' => 'Materia',
+            'minty' => 'Minty',
+            'pulse' => 'Pulse',
+            'sandstone' => 'Sandstone',
+            'simplex' => 'Simplex',
+            'sketchy' => 'Sketchy',
+            'slate' => 'Slate',
+            'solar' => 'Solar',
+            'spacelab' => 'Spacelab',
+            'superhero' => 'Superhero',
+            'united' => 'United',
+            'yeti' => 'Yeti',
+        )
+    ) ) );
 
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'custom_logo_display', array(
-        'label'    => __( 'Upload Logo (replaces text)', 'theme22' ),
-        'section'  => 'custom_logo',
-        'settings' => 'custom_logo_display',
+    $wp_customize->add_setting( 'preset_style_setting', array(
+        'default'   => 'default',
+        'type'       => 'theme_mod',
+        'capability' => 'edit_theme_options',
+        'sanitize_callback' => 'wp_filter_nohtml_kses',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'preset_style_setting', array(
+        'label' => __( 'Typography', 'theme22' ),
+        'section'    => 'typography',
+        'settings'   => 'preset_style_setting',
+        'type'    => 'select',
+        'choices' => array(
+            'default' => 'Default',
+            'arbutusslab-opensans' => 'Arbutus Slab / Opensans',
+            'montserrat-merriweather' => 'Montserrat / Merriweather',
+            'montserrat-opensans' => 'Montserrat / Opensans',
+            'oswald-muli' => 'Oswald / Muli',
+            'poppins-lora' => 'Poppins / Lora',
+            'poppins-poppins' => 'Poppins / Poppins',
+            'roboto-roboto' => 'Roboto / Roboto',
+            'robotoslab-roboto' => 'Roboto Slab / Roboto',
+        )
     ) ) );
 
 
-## Breadcrumbs
-
-$wp_customize->add_section( 'breadcrumbs' , array(
-    'title'      => 'Breadcrumbs',
-    'priority'   => 20,
-) );
-
-$wp_customize->add_setting( 'breadcrumbs_display' , array(
-    'default'     => true,
-    'transport'   => 'refresh',
-) );
-
-$wp_customize->add_control( 'breadcrumbs_display', array(
-'label' => 'Show Breadcrumbs?',
-'section' => 'breadcrumbs',
-'settings' => 'breadcrumbs_display',
-'type' => 'radio',
-'choices' => array(
-  'on' => 'Show',
-  'off' => 'Hide',
-),
-) );
+    /*Banner*/
+    $wp_customize->add_section(
+        'header_image',
+        array(
+            'title' => __( 'Header Banner', 'theme22' ),
+            'priority' => 30,
+        )
+    );
 
 
+    $wp_customize->add_control(
+        'header_img',
+        array(
+            'label' => __( 'Header Image', 'theme22' ),
+            'section' => 'header_images',
+            'type' => 'text',
+        )
+    );
 
+    $wp_customize->add_setting(
+        'header_bg_color_setting',
+        array(
+            'default'     => '#fff',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'header_bg_color',
+            array(
+                'label'      => __( 'Header Banner Background Color', 'theme22' ),
+                'section'    => 'header_image',
+                'settings'   => 'header_bg_color_setting',
+            ) )
+    );
+
+    $wp_customize->add_setting( 'header_banner_title_setting', array(
+        'default' => __( 'WP Bootstrap Framework', 'theme22' ),
+        'sanitize_callback' => 'wp_filter_nohtml_kses',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'header_banner_title_setting', array(
+        'label' => __( 'Banner Title', 'theme22' ),
+        'section'    => 'header_image',
+        'settings'   => 'header_banner_title_setting',
+        'type' => 'text'
+    ) ) );
+
+    $wp_customize->add_setting( 'header_banner_tagline_setting', array(
+        'default' => __( 'To customize the contents of this header banner and other elements of your site go to Dashboard - Appearance - Customize','theme22' ),
+        'sanitize_callback' => 'wp_filter_nohtml_kses',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'header_banner_tagline_setting', array(
+        'label' => __( 'Banner Tagline', 'theme22' ),
+        'section'    => 'header_image',
+        'settings'   => 'header_banner_tagline_setting',
+        'type' => 'text'
+    ) ) );
+    $wp_customize->add_setting( 'header_banner_visibility', array(
+        'capability' => 'edit_theme_options',
+        'sanitize_callback' => 'themeslug_sanitize_checkbox',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'header_banner_visibility', array(
+        'settings' => 'header_banner_visibility',
+        'label'    => __('Remove Header Banner', 'theme22'),
+        'section'    => 'header_image',
+        'type'     => 'checkbox',
+    ) ) );
+
+
+    //Site Name Text Color
+   $wp_customize->add_section(
+        'site_name_text_color',
+        array(
+            'title' => __( 'Other Customizations', 'theme22' ),
+            //'description' => __( 'This is a section for the header banner Image.', 'theme22' ),
+            'priority' => 40,
+        )
+    );
+    $wp_customize->add_section(
+        'colors',
+        array(
+            'title' => __( 'Background Color', 'theme22' ),
+            //'description' => __( 'This is a section for the header banner Image.', 'theme22' ),
+            'priority' => 50,
+            'panel' => 'styling_option_panel',
+        )
+    );
+    $wp_customize->add_section(
+        'background_image',
+        array(
+            'title' => __( 'Background Image', 'theme22' ),
+            //'description' => __( 'This is a section for the header banner Image.', 'theme22' ),
+            'priority' => 60,
+            'panel' => 'styling_option_panel',
+        )
+    );
+
+    // Bootstrap and Fontawesome Option
+    $wp_customize->add_setting( 'cdn_assets_setting', array(
+        'default' => __( 'no','theme22' ),
+        'sanitize_callback' => 'wp_filter_nohtml_kses',
+    ) );
+    $wp_customize->add_control( 
+        'cdn_assets',
+        array(
+            'label' => __( 'Use CDN for Assets', 'theme22' ),
+            'description' => __( 'All Bootstrap Assets and FontAwesome will be loaded in CDN.', 'theme22' ),
+            'section' => 'site_name_text_color',
+            'settings' => 'cdn_assets_setting',
+	        'type'    => 'select',
+	        'choices' => array(
+	            'yes' => __( 'Yes', 'theme22' ),
+	            'no' => __( 'No', 'theme22' ),
+        	)
+        )
+    );
+
+
+    $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+    $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+    $wp_customize->get_setting( 'header_textcolor' )->transport = 'refresh';
+    $wp_customize->get_control( 'header_textcolor'  )->section = 'site_name_text_color';
+    $wp_customize->get_control( 'background_image'  )->section = 'site_name_text_color';
+    $wp_customize->get_control( 'background_color'  )->section = 'site_name_text_color';
+
+    // Add control for logo uploader
+    $wp_customize->add_setting( 'theme22_logo', array(
+        //'default' => __( '', 'theme22' ),
+        'sanitize_callback' => 'esc_url',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'theme22_logo', array(
+        'label'    => __( 'Upload Logo (replaces text)', 'theme22' ),
+        'section'  => 'title_tagline',
+        'settings' => 'theme22_logo',
+    ) ) );
 
 }
+add_action( 'customize_register', 'theme22_customize_register' );
 
-## add_action( 'wp_head', 'cd_customizer_css');
-function cd_customizer_css()
+add_action( 'wp_head', 'theme22_customizer_css');
+function theme22_customizer_css()
+
 {
+    $header_bg_color = get_theme_mod('header_bg_color_setting', '#fff');
+
     ?>
-         <style type="text/css">
-			 body { background-color: <?php echo get_theme_mod('background_color_display', '#ffffff'); ?>!important;}
-             a, .nav-link { color: <?php echo get_theme_mod('main_color_display', '#5e007a'); ?>; }
-             .bg-body-tertiary { background-color: <?php echo get_theme_mod('main_color_display', '#5e007a'); ?>!important;}
-             .home h1, .home .bg-body-tertiary { color: <?php echo get_theme_mod('homebanerText_color_display', '#ffffff'); ?>; }
-             .accent { background-color: <?php echo get_theme_mod('accent_color_display', '#dd9933'); ?>!important; }
-         </style>
+    <style type="text/css">
+        #page-sub-header { background: <?php echo esc_attr( $header_bg_color ); ?>; }
+    </style>
     <?php
 }
 
-?>
+
+/**
+ * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+ */
+function theme22_customize_preview_js() {
+    wp_enqueue_script( 'theme22_customizer', get_template_directory_uri() . '/inc/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+}
+add_action( 'customize_preview_init', 'theme22_customize_preview_js' );
