@@ -76,28 +76,7 @@ endif;
 add_action( 'after_setup_theme', 'theme22_setup' );
 
 
-/**
- * Add Welcome message to dashboard
- */
-function theme22_reminder(){
-        $theme_page_url = 'https://afterimagedesigns.com/theme22/?dashboard=1';
 
-            if(!get_option( 'triggered_welcomet')){
-                $message = sprintf(__( 'Welcome to Theme22 Theme! Before diving in to your new theme, please visit the <a style="color: #fff; font-weight: bold;" href="%1$s" target="_blank">theme\'s</a> page for access to dozens of tips and in-depth tutorials.', 'theme22' ),
-                    esc_url( $theme_page_url )
-                );
-
-                printf(
-                    '<div class="notice is-dismissible" style="background-color: #6C2EB9; color: #fff; border-start: none;">
-                        <p>%1$s</p>
-                    </div>',
-                    $message
-                );
-                add_option( 'triggered_welcomet', '1', '', 'yes' );
-            }
-
-}
-add_action( 'admin_notices', 'theme22_reminder' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
