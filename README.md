@@ -41,6 +41,7 @@ This theme will be an active project which we will update from time to time. Che
 
 ## Credits
 
+* theme22 is an updated fork of WP Bootstrap Starter 3.3.6 from Afterimage Designs (http://afterimagedesigns.com/)
 * normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2026 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
 * Bootstrap http://getbootstrap.com, (C) 2011-2026 Twitter, Inc., [MIT] (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 * WP Bootstrap Navwalker https://github.com/wp-bootstrap/wp-bootstrap-navwalker, [GPLv3](https://www.gnu.org/licenses/gps-3.0.en.html)
