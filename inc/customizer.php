@@ -56,7 +56,7 @@ function theme22_customize_register( $wp_customize ) {
     );
 
     $wp_customize->add_setting( 'header_banner_title_setting', array(
-        'default' => __( 'theme22 Framework', 'theme22' ),
+        'default' => __( 'theme22', 'theme22' ),
         'sanitize_callback' => 'wp_filter_nohtml_kses',
     ) );
     $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'header_banner_title_setting', array(
