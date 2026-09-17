@@ -17,7 +17,7 @@ function themeslug_sanitize_checkbox( $checked ) {
 
 function theme22_customize_register( $wp_customize ) {
 
-  
+
     /*Banner*/
     $wp_customize->add_section(
         'header_image',
@@ -56,7 +56,7 @@ function theme22_customize_register( $wp_customize ) {
     );
 
     $wp_customize->add_setting( 'header_banner_title_setting', array(
-        'default' => __( 'WP Bootstrap Framework', 'theme22' ),
+        'default' => __( 'theme22 Framework', 'theme22' ),
         'sanitize_callback' => 'wp_filter_nohtml_kses',
     ) );
     $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'header_banner_title_setting', array(
@@ -67,7 +67,7 @@ function theme22_customize_register( $wp_customize ) {
     ) ) );
 
     $wp_customize->add_setting( 'header_banner_tagline_setting', array(
-        'default' => __( 'To customize the contents of this header banner and other elements of your site go to Dashboard - Appearance - Customize','theme22' ),
+        'default' => __( 'To edit this section and other elements of your site go to WP Admin Dashboard > Appearance > Customize','theme22' ),
         'sanitize_callback' => 'wp_filter_nohtml_kses',
     ) );
     $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'header_banner_tagline_setting', array(

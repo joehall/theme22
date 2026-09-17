@@ -261,7 +261,7 @@ table {
 --------------------------------------------------------------*/
 header#masthead {
   margin-bottom: 0;
-  background-color: #563d7c ;
+  background-color: #1b74ae;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
   padding: .74rem 1rem;
 }
@@ -288,10 +288,10 @@ header#masthead {
   background-size: cover !important;
 }
 
-body:not(.theme-preset-active) #page-sub-header h1 {
+body #page-sub-header h1 {
   line-height: 1.6;
   font-size: 4rem;
-  color: #563e7c;
+  color: #01a0d2;
   margin: 0 0 1rem;
   border: 0;
   padding: 0;
@@ -303,7 +303,7 @@ body:not(.theme-preset-active) #page-sub-header h1 {
   font-size: 1.25rem;
   font-weight: 300;
 }
-body:not(.theme-preset-active) #page-sub-header p {
+body #page-sub-header p {
 color: #212529;
 }
 a.page-scroller {
@@ -314,10 +314,10 @@ a.page-scroller {
 }
 
 @media screen and (min-width: 768px) {
-  body:not(.theme-preset-active) #page-sub-header h1 {
+  body #page-sub-header h1 {
     font-size: 3.750rem;
   }
-  body:not(.theme-preset-active) #page-sub-header {
+  body #page-sub-header {
     font-size: 1.25rem;
   }
 }
@@ -338,16 +338,16 @@ a.page-scroller {
   padding-right: 0;
 }
 
-body:not(.theme-preset-active) #masthead .navbar-nav > li > a {
-  color: #cdbfe3;
+body #masthead .navbar-nav > li > a {
+  color: #fff;
   padding: 0.5rem;
   font-weight: 500;
   font-size: 0.875rem;
 }
 
-body:not(.theme-preset-active) #masthead .navbar-nav > li > a:hover,
-body:not(.theme-preset-active) #masthead .navbar-nav > li.current_page_item > a {
-  color: #fff;
+body #masthead .navbar-nav > li > a:hover,
+body #masthead .navbar-nav > li.current_page_item > a {
+  color: #cdbfe3;
   font-weight: 600;
   /*background: #f9f9f9;*/
 }
@@ -934,7 +934,7 @@ object {
 footer#colophon {
   font-size: 85%;
 }
-body:not(.theme-preset-active) footer#colophon {
+body footer#colophon {
   color: #99979c;
   background-color: #f7f7f7;
 }
