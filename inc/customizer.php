@@ -17,79 +17,7 @@ function themeslug_sanitize_checkbox( $checked ) {
 
 function theme22_customize_register( $wp_customize ) {
 
-    //Style Preset
-    $wp_customize->add_section(
-        'typography',
-        array(
-            'title' => __( 'Preset Styles', 'theme22' ),
-            //'description' => __( 'This is a section for the typography', 'theme22' ),
-            'priority' => 20,
-        )
-    );
-
-    //Theme Option
-    $wp_customize->add_setting( 'theme_option_setting', array(
-        'default'   => 'default',
-        'type'       => 'theme_mod',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'wp_filter_nohtml_kses',
-    ) );
-    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'theme_option_setting', array(
-        'label' => __( 'Theme Option', 'theme22' ),
-        'section'    => 'typography',
-        'settings'   => 'theme_option_setting',
-        'type'    => 'select',
-        'choices' => array(
-            'default' => 'Default',
-            'cerulean' => 'Cerulean',
-            'cosmo' => 'Cosmo',
-            'cyborg' => 'Cyborg',
-            'darkly' => 'Darkly',
-            'flatly' => 'Flatly',
-            'journal' => 'Journal',
-            'litera' => 'Litera',
-            'lumen' => 'Lumen',
-            'lux' => 'Lux',
-            'materia' => 'Materia',
-            'minty' => 'Minty',
-            'pulse' => 'Pulse',
-            'sandstone' => 'Sandstone',
-            'simplex' => 'Simplex',
-            'sketchy' => 'Sketchy',
-            'slate' => 'Slate',
-            'solar' => 'Solar',
-            'spacelab' => 'Spacelab',
-            'superhero' => 'Superhero',
-            'united' => 'United',
-            'yeti' => 'Yeti',
-        )
-    ) ) );
-
-    $wp_customize->add_setting( 'preset_style_setting', array(
-        'default'   => 'default',
-        'type'       => 'theme_mod',
-        'capability' => 'edit_theme_options',
-        'sanitize_callback' => 'wp_filter_nohtml_kses',
-    ) );
-    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'preset_style_setting', array(
-        'label' => __( 'Typography', 'theme22' ),
-        'section'    => 'typography',
-        'settings'   => 'preset_style_setting',
-        'type'    => 'select',
-        'choices' => array(
-            'default' => 'Default',
-            'arbutusslab-opensans' => 'Arbutus Slab / Opensans',
-            'montserrat-merriweather' => 'Montserrat / Merriweather',
-            'montserrat-opensans' => 'Montserrat / Opensans',
-            'oswald-muli' => 'Oswald / Muli',
-            'poppins-lora' => 'Poppins / Lora',
-            'poppins-poppins' => 'Poppins / Poppins',
-            'roboto-roboto' => 'Roboto / Roboto',
-            'robotoslab-roboto' => 'Roboto Slab / Roboto',
-        )
-    ) ) );
-
-
+  
     /*Banner*/
     $wp_customize->add_section(
         'header_image',
@@ -193,7 +121,7 @@ function theme22_customize_register( $wp_customize ) {
         'default' => __( 'no','theme22' ),
         'sanitize_callback' => 'wp_filter_nohtml_kses',
     ) );
-    $wp_customize->add_control( 
+    $wp_customize->add_control(
         'cdn_assets',
         array(
             'label' => __( 'Use CDN for Assets', 'theme22' ),
